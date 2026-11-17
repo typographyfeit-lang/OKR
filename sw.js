@@ -1,19 +1,11 @@
-// Сначала сеть (всегда свежая версия), при отсутствии сети — кэш.
-const V = 'okr-daily-1';
-const FILES = ['./', 'index.html', 'manifest.json', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(V).then(c => Promise.all(FILES.map(f => c.add(f).catch(() => {})))).then(() => self.skipWaiting()));
-});
-self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim()));
-});
-self.addEventListener('fetch', e => {
-  const r = e.request;
-  if (r.method !== 'GET' || new URL(r.url).origin !== location.origin) return;
-  e.respondWith(
-    fetch(r).then(res => {
-      if (res.ok) { const cp = res.clone(); caches.open(V).then(c => c.put(r, cp)); }
-      return res;
-    }).catch(() => caches.match(r).then(m => m || caches.match('index.html')))
-  );
+const CACHE='okr-daily-v3-20261117';
+const FILES=['./','index.html','styles.css','app.js','manifest.json','icon-180.png','icon-192.png','icon-512.png'];
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>Promise.allSettled(FILES.map(file=>cache.add(file)))).then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{
+ if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin)return;
+ event.respondWith(fetch(event.request).then(response=>{
+  if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy)).catch(()=>{});}
+  return response;
+ }).catch(async()=>await caches.match(event.request)||await caches.match('./')));
 });

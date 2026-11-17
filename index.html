@@ -1,284 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>OKR Daily</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="OKR Daily">
-<meta name="theme-color" content="#0f1117">
-<link rel="apple-touch-icon" href="icon-180.png">
-<link rel="icon" href="icon-180.png">
-<link rel="manifest" href="manifest.json">
-<style>
-:root{--bg:#0f1117;--card:#1a1d27;--field:#12141c;--accent:#6c5ce7;--accent2:#a29bfe;--ok:#00b894;--bad:#ff7675;--warn:#fdcb6e;--text:#e8e8e8;--muted:#8b8fa3;--line:#2d3142;color-scheme:dark}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font:15px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh}
-main{max-width:480px;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(96px + env(safe-area-inset-bottom))}
-h1{font-size:24px;font-weight:700;line-height:1.25}
-h2{font-size:15px;font-weight:600;color:var(--accent2);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-.sub{color:var(--muted);font-size:13px;margin:2px 0 16px}
-.muted{color:var(--muted);font-size:13px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
-.sc{background:var(--field);border-radius:12px;padding:12px;margin-bottom:8px}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
-.btn{display:block;width:100%;padding:13px;border-radius:12px;background:var(--accent);color:#fff;font-weight:600;text-align:center;margin-top:8px}
-.btn:active{opacity:.8}
-.btn.ghost{background:none;border:1px solid var(--line)}
-.btn.ok{background:var(--ok);color:#04201a}
-.btn.sm{display:inline-block;width:auto;padding:8px 14px;margin:0}
-.del{color:var(--bad);font-size:14px;padding:10px 0}
-input:not([type=range]),textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--field);color:var(--text);font-size:16px;font-family:inherit;margin-bottom:8px}
-.sc input,.sc select{background:var(--card)}
-textarea{min-height:72px;resize:vertical}
-input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0}
-:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
-.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:4px;transition:width .3s}
-.goal{display:flex;align-items:flex-start;border-bottom:1px solid var(--line)}
-.goal:last-of-type{border:0}
-.gm{display:flex;gap:12px;flex:1;min-width:0;padding:12px 0;align-items:flex-start}
-.chk{width:28px;height:28px;border-radius:8px;border:2px solid var(--accent);flex:none;display:grid;place-items:center;font-size:16px;color:#fff}
-.done .chk{background:var(--accent)}
-.done .gt b{text-decoration:line-through;color:var(--muted)}
-.gt{flex:1;min-width:0}
-.gt b{display:block;font-weight:600;overflow-wrap:anywhere}
-.gt small{display:block;color:var(--muted);font-size:13px}
-.ico{width:44px;height:44px;flex:none;color:var(--muted);font-size:18px;text-align:center}
-.stat{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
-.stat:last-child{border:0}
-.ins{background:#222633;padding:12px;border-radius:12px;margin:8px 0;border-left:3px solid var(--accent)}
-.good{border-color:var(--ok)}.bad{border-color:var(--bad)}.warn{border-color:var(--warn)}
-.badge{background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.grid label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}
-.row2{display:flex;gap:8px;align-items:center}
-.hrow{display:flex;justify-content:space-between;align-items:center;width:100%;gap:12px;margin-bottom:8px;padding:14px 16px}
-.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));z-index:9}
-.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:11px;color:var(--muted);padding:5px 0;border-radius:10px;text-align:center}
-.tabs i{font-style:normal;font-size:20px;filter:grayscale(1);opacity:.7}
-.tabs .on{color:var(--accent2)}
-.tabs .on i{filter:none;opacity:1}
-#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#2a2f44;padding:10px 16px;border-radius:20px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20;max-width:90%;text-align:center}
-#toast.on{opacity:1}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10131f">
+  <meta name="description" content="OKR Daily — личная система целей, решений и фокуса">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="OKR Daily">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>OKR Daily 3</title>
 </head>
 <body>
-<main></main>
-<nav class="tabs">
-<button data-a="tab" data-t="today"><i>🎯</i>Сегодня</button>
-<button data-a="tab" data-t="evening"><i>🌙</i>Вечер</button>
-<button data-a="tab" data-t="analysis"><i>📊</i>Анализ</button>
-<button data-a="tab" data-t="okr"><i>🧭</i>OKR</button>
-<button data-a="tab" data-t="history"><i>🗓</i>История</button>
-</nav>
-<div id="toast" role="status"></div>
-<script>
-const KEY='okr-daily-v2',OLD='okr-daily-v1',MAX=2,ROLL=3; // день сменяется в 03:00
-const LONG={weekday:'long',day:'numeric',month:'long'};
-const SW=[['s','Сильные','Что получилось?'],['w','Слабые','Что не получилось?'],['o','Возможности','Что можно использовать?'],['t','Угрозы','Что мешает?']];
-let data,tab,histKey=null,tt;const editing=new Set();
-const $=s=>document.querySelector(s);
-const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-const today=()=>ymd(new Date(Date.now()-ROLL*36e5));
-const plus=(k,n)=>{const d=new Date(k+'T12:00:00');d.setDate(d.getDate()+n);return ymd(d)};
-const fmt=(k,o)=>new Date(k+'T12:00:00').toLocaleDateString('ru-RU',o||{weekday:'short',day:'numeric',month:'short'});
-const blank=()=>({objective:{title:'',keyResults:[]},days:{}});
-const krs=()=>data.objective.keyResults;
-const KR=id=>krs().find(r=>r.id===id);
-const pct=r=>r.target>0?Math.max(0,Math.min(100,Math.round((r.current||0)/r.target*100))):Math.round(r.progress||0);
-const avg=()=>krs().length?Math.round(krs().reduce((s,r)=>s+pct(r),0)/krs().length):0;
-const G=k=>(data.days[k]||{}).goals||[];
-const goal=(k,id)=>G(k).find(g=>g.id===id);
-const stats=k=>{const g=G(k);return[g.filter(x=>x.done).length,g.length]};
-const hd=(t,s)=>`<h1>${t}</h1><p class="sub">${s||''}</p>`;
-function day(k){return data.days[k]||(data.days[k]={goals:[],swot:{},closed:false})}
-function toast(m){const e=$('#toast');e.textContent=m;e.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>e.classList.remove('on'),2400)}
-
-// ===== данные =====
-function normalize(){
-  const o=data.objective=data.objective||{};o.title=o.title||'';o.keyResults=o.keyResults||[];
-  o.keyResults.forEach(r=>{r.id=r.id||uid()});
-  data.days=data.days||{};
-  Object.values(data.days).forEach(d=>{d.goals=d.goals||[];d.swot=d.swot||{};d.goals.forEach(g=>{g.id=g.id||uid();g.text=g.text||''})});
-  const t=plus(today(),1),dr=(data.tomorrowGoals||[]).filter(g=>(g.text||'').trim()); // черновик из v1
-  if(dr.length&&!G(t).length)day(t).goals=dr.map(g=>({...g,id:uid(),done:false}));
-  delete data.tomorrowGoals;
-}
-function load(){
-  data=blank();let raw;
-  try{raw=localStorage.getItem(KEY)||localStorage.getItem(OLD);if(raw)data=Object.assign(blank(),JSON.parse(raw))}
-  catch(e){data=blank();if(raw){try{localStorage.setItem(KEY+'-broken',raw)}catch(_){}toast('Данные повреждены, копия сохранена')}}
-  normalize();
-}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){toast('Не удалось сохранить')}}
-function clean(k){const d=data.days[k];if(d)d.goals=d.goals.filter(g=>g.text.trim()||editing.has(g.id))}
-
-// ===== метрики =====
-function streak(){let n=0,k=today();if(!(data.days[k]&&data.days[k].closed))k=plus(k,-1);while(data.days[k]&&data.days[k].closed){n++;k=plus(k,-1)}return n}
-function week(){let t=0,d=0;for(let i=0;i<7;i++){const k=plus(today(),-i),x=data.days[k];if(x&&(x.closed||k<today())){const s=stats(k);d+=s[0];t+=s[1]}}return{rate:t?Math.round(d/t*100):null}}
-function cnt(id){let d=0,c=0;for(let i=0;i<7;i++)G(plus(today(),-i)).forEach(g=>{if(g.krId===id){c++;if(g.done)d++}});return[d,c]}
-
-// ===== компоненты =====
-function goalView(k,g){
-  const r=KR(g.krId);
-  return `<div class="goal ${g.done?'done':''}"><button class="gm" data-a="toggle" data-k="${k}" data-id="${g.id}" aria-pressed="${!!g.done}"><span class="chk">${g.done?'✓':''}</span><span class="gt"><b>${esc(g.text)}</b>${r?`<small>🎯 ${esc(r.title)}</small>`:''}${g.concretization?`<small>Готово, когда: ${esc(g.concretization)}</small>`:''}</span></button><button class="ico" data-a="edit" data-id="${g.id}" aria-label="Изменить">✎</button></div>`;
-}
-function goalEdit(k,g,fin){
-  const f=(n,ph,v)=>`<input data-gf="${n}" data-k="${k}" data-id="${g.id}" value="${esc(v)}" placeholder="${ph}">`;
-  return `<div class="sc">${f('text','Что сделаю?',g.text)}${krs().length?`<select data-gf="krId" data-k="${k}" data-id="${g.id}"><option value="">К какому KR?</option>${krs().map(r=>`<option value="${r.id}"${g.krId===r.id?' selected':''}>${esc(r.title)}</option>`).join('')}</select>`:''}${f('concretization','Как пойму, что готово?',g.concretization||'')}<div class="row2" style="justify-content:space-between"><button class="del" data-a="delGoal" data-k="${k}" data-id="${g.id}">Удалить</button>${fin?'<button class="btn sm" data-a="edit" data-id="'+g.id+'">Готово</button>':''}</div></div>`;
-}
-const goalRow=(k,g)=>editing.has(g.id)?goalEdit(k,g,1):goalView(k,g);
-const addBtn=k=>G(k).length<MAX?`<button class="btn ghost" data-a="addGoal" data-k="${k}">+ Добавить цель</button>`:'';
-function krCtl(r){
-  const p=pct(r);
-  return `<div style="margin-bottom:14px"><div class="stat" style="border:0;padding:0"><b>${esc(r.title)}</b><span style="color:var(--accent2)" data-pt="${r.id}">${p}%</span></div><div class="bar"><i data-pb="${r.id}" style="width:${p}%"></i></div>${r.target>0?`<div class="row2"><input type="number" inputmode="decimal" step="any" data-krf="current" data-num="1" data-id="${r.id}" value="${r.current||0}" style="margin:0"><span class="muted" style="white-space:nowrap">из ${r.target} ${esc(r.unit||'')}</span></div>`:`<input type="range" min="0" max="100" data-krf="progress" data-num="1" data-id="${r.id}" value="${r.progress||0}">`}</div>`;
-}
-function krEdit(r){
-  const p=pct(r);
-  return `<div class="sc"><input data-krf="title" data-id="${r.id}" value="${esc(r.title)}"><div class="row2"><input type="number" inputmode="decimal" step="any" data-krf="target" data-num="1" data-id="${r.id}" value="${r.target||''}" placeholder="Цель (число)"><input data-krf="unit" data-id="${r.id}" value="${esc(r.unit||'')}" placeholder="Единица"></div><div class="bar"><i data-pb="${r.id}" style="width:${p}%"></i></div><div class="row2" style="justify-content:space-between"><span class="muted" data-pt="${r.id}">${p}%</span><button class="del" data-a="delKR" data-id="${r.id}">Удалить</button></div></div>`;
-}
-function krRow(r){
-  const p=pct(r),t=today(),c=cnt(r.id),ks=Object.keys(data.days).filter(k=>data.days[k].closed&&k>=plus(t,-7)&&data.days[k].snap&&data.days[k].snap[r.id]!=null).sort(),dl=ks.length?p-data.days[ks[0]].snap[r.id]:0;
-  return `<div style="margin-bottom:12px"><div class="stat" style="border:0;padding:0"><span>${esc(r.title)}</span><b>${p}%${dl?` <span class="muted">${dl>0?'+':''}${dl}</span>`:''}</b></div><div class="bar"><i style="width:${p}%"></i></div><div class="muted">Целей за 7 дней: ${c[0]}/${c[1]}</div></div>`;
-}
-function paint(r){const p=pct(r);document.querySelectorAll(`[data-pt="${r.id}"]`).forEach(e=>e.textContent=p+'%');document.querySelectorAll(`[data-pb="${r.id}"]`).forEach(e=>e.style.width=p+'%')}
-
-// ===== экраны =====
-function vToday(){
-  const t=today(),gs=G(t),s=stats(t);
-  return hd('Сегодня',fmt(t,LONG))+
-  (krs().length?'':`<div class="card"><p class="muted" style="margin-bottom:10px">Добавь Key Results на вкладке OKR, и цели можно будет привязывать к ним.</p><button class="btn sm" data-a="tab" data-t="okr">Открыть OKR</button></div>`)+
-  `<div class="card"><h2>Цели на сегодня <span class="badge">${s[0]}/${s[1]}</span></h2>${s[1]?`<div class="bar"><i style="width:${Math.round(s[0]/s[1]*100)}%"></i></div>`:''}${gs.map(g=>goalRow(t,g)).join('')||'<p class="muted">Целей пока нет. Добавь их сейчас или распланируй вечером.</p>'}${addBtn(t)}</div>`+
-  (krs().length?`<div class="card"><h2>${esc(data.objective.title||'Key Results')} <span class="badge">${avg()}%</span></h2>${krs().map(r=>`<div class="stat"><span>${esc(r.title)}</span><b>${pct(r)}%</b></div>`).join('')}</div>`:'');
-}
-function vEvening(){
-  const t=today(),n=plus(t,1),d=data.days[t]||{},sw=d.swot||{},s=stats(t);
-  return hd('Вечерний ритуал',fmt(t,LONG))+
-  `<div class="card"><h2>Итоги дня <span class="badge">${s[0]}/${s[1]}</span></h2>${G(t).map(g=>goalRow(t,g)).join('')||'<p class="muted">Целей на сегодня не было.</p>'}</div>`+
-  `<div class="card"><h2>Прогресс по Key Results</h2>${krs().map(krCtl).join('')||'<p class="muted">Добавь Key Results на вкладке OKR.</p>'}</div>`+
-  `<div class="card"><h2>SWOT дня</h2><div class="grid">${SW.map(x=>`<div><label>${x[1]}</label><textarea data-sw="${x[0]}" placeholder="${x[2]}">${esc(sw[x[0]]||'')}</textarea></div>`).join('')}</div></div>`+
-  `<div class="card"><h2>План на завтра <span class="badge">макс. ${MAX}</span></h2>${G(n).map(g=>goalEdit(n,g,0)).join('')}${addBtn(n)}</div>`+
-  `<button class="btn ok" data-a="close">${d.closed?'День закрыт ✓ Сохранить снова':'Закрыть день'}</button>`;
-}
-function vAnalysis(){
-  const ks=Object.keys(data.days).filter(k=>data.days[k].closed).sort(),st=streak(),w=week(),ins=[];
-  if(w.rate!=null)ins.push(w.rate>=70?['good','Хороший темп: выполнено '+w.rate+'% целей за неделю.']:['bad','Выполнено '+w.rate+'% целей за неделю. Возможно, цели слишком большие: дроби их или сузь фокус.']);
-  if(st>=5)ins.push(['good','Регулярность: '+st+' дн. подряд.']);
-  if(ks.length)krs().forEach(r=>{if(!cnt(r.id)[1])ins.push(['warn','У KR «'+esc(r.title)+'» не было целей 7 дней.'])});
-  const wk={};ks.slice(-30).forEach(k=>String(data.days[k].swot.w||'').toLowerCase().split(/[\n;,•]+/).forEach(x=>{x=x.trim();if(x)wk[x]=(wk[x]||0)+1}));
-  const top=Object.entries(wk).filter(e=>e[1]>1).sort((a,b)=>b[1]-a[1]).slice(0,3);
-  if(top.length)ins.push(['','Повторяющиеся слабые стороны:<br>'+top.map(e=>'• '+esc(e[0])+' ('+e[1]+' раз)').join('<br>')]);
-  const last=[0,1,2,3,4,5,6].map(i=>plus(today(),-i)).filter(k=>data.days[k]&&(data.days[k].closed||k<today())&&G(k).length);
-  return hd('Анализ','Что происходит на самом деле')+
-  `<div class="card"><div class="stat"><span>Дней закрыто подряд</span><b>${st}</b></div><div class="stat"><span>Выполнение целей (7 дней)</span><b>${w.rate==null?'—':w.rate+'%'}</b></div><div class="stat"><span>Всего закрытых дней</span><b>${ks.length}</b></div></div>`+
-  (krs().length?`<div class="card"><h2>Key Results</h2>${krs().map(krRow).join('')}</div>`:'')+
-  `<div class="card"><h2>Выводы</h2>${ins.map(i=>`<div class="ins ${i[0]}">${i[1]}</div>`).join('')||'<p class="muted">Закрой несколько дней, и здесь появятся выводы.</p>'}</div>`+
-  (last.length?`<div class="card"><h2>Последние дни</h2>${last.map(k=>{const s=stats(k);return `<div class="stat"><span>${fmt(k)}</span><b>${s[0]}/${s[1]}</b></div>`}).join('')}</div>`:'')+
-  `<button class="btn ghost" data-a="ai">Скопировать данные для разбора в ИИ</button>`;
-}
-function vOKR(){
-  const o=data.objective;
-  return hd('Objective & Key Results')+
-  `<div class="card"><h2>Главная цель</h2><input data-obj="title" value="${esc(o.title)}" placeholder="Например: Запустить донерку">${o.title?`<div class="bar"><i style="width:${avg()}%"></i></div><p class="muted">Средний прогресс: ${avg()}%</p>`:''}</div>`+
-  `<div class="card"><h2>Key Results</h2>${krs().map(krEdit).join('')||'<p class="muted" style="margin-bottom:8px">Key Results пока нет.</p>'}<p class="muted" style="margin-bottom:8px">Если указать числовую цель, прогресс считается по текущему значению. Без неё его задаёт ползунок.</p><div class="sc"><input id="nk" placeholder="Новый измеримый результат"><div class="row2"><input id="nt" type="number" inputmode="decimal" step="any" placeholder="Цель (число)"><input id="nu" placeholder="Единица"></div><button class="btn" data-a="addKR">+ Добавить KR</button></div></div>`+
-  `<div class="card"><h2>Данные</h2><p class="muted" style="margin-bottom:4px">Всё хранится только на этом устройстве. Делай копию.</p><button class="btn ghost" data-a="exp">Экспорт в JSON</button><button class="btn ghost" data-a="imp">Импорт из JSON</button><input type="file" id="imp" accept=".json,application/json" hidden></div>`;
-}
-function vHistory(){
-  const t=today();
-  if(histKey){
-    const d=data.days[histKey]||{goals:[],swot:{}},sw=d.swot||{};
-    const sn=d.snap?Object.keys(d.snap).map(id=>[(KR(id)||{}).title,d.snap[id]]).filter(x=>x[0]):(d.krSnapshot||[]).map(x=>[x.title,x.progress]);
-    return `<button class="btn ghost sm" data-a="back">← Назад</button><div style="height:12px"></div>`+hd(fmt(histKey,LONG),d.closed?'День закрыт':'День не закрыт')+
-    `<div class="card"><h2>Цели</h2>${d.goals.map(g=>{const r=KR(g.krId);return `<div class="goal ${g.done?'done':''}"><div class="gm"><span class="chk">${g.done?'✓':''}</span><span class="gt"><b>${esc(g.text)}</b>${r?`<small>🎯 ${esc(r.title)}</small>`:''}${g.concretization?`<small>Готово, когда: ${esc(g.concretization)}</small>`:''}</span></div></div>`}).join('')||'<p class="muted">Целей не было.</p>'}</div>`+
-    (sn.length?`<div class="card"><h2>Key Results на конец дня</h2>${sn.map(x=>`<div class="stat"><span>${esc(x[0])}</span><b>${x[1]||0}%</b></div>`).join('')}</div>`:'')+
-    `<div class="card"><h2>SWOT</h2>${SW.map(x=>`<p style="margin-bottom:6px"><b>${x[1]}:</b> ${esc(sw[x[0]]||'—')}</p>`).join('')}</div><button class="del" data-a="delDay" data-k="${histKey}">Удалить день</button>`;
-  }
-  const keys=Object.keys(data.days).filter(k=>{const d=data.days[k];return d.closed||d.goals.length||Object.values(d.swot).some(Boolean)}).sort().reverse();
-  return hd('История дней')+(keys.map(k=>{const d=data.days[k],s=stats(k);return `<button class="card hrow" data-a="hist" data-k="${k}"><span><b>${fmt(k)}</b><br><span class="muted">${s[0]}/${s[1]} целей</span></span><span class="badge" style="${d.closed?'':'background:var(--line)'}">${d.closed?'закрыт':k>t?'план':'не закрыт'}</span></button>`}).join('')||'<p class="muted">Пока нет данных. Закрой первый день на вкладке «Вечер».</p>');
-}
-function render(){
-  const t=today();clean(t);clean(plus(t,1));
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));
-  $('main').innerHTML=({today:vToday,evening:vEvening,analysis:vAnalysis,okr:vOKR,history:vHistory})[tab]();
-}
-
-// ===== действия =====
-const act={
- tab:d=>{tab=d.t;histKey=null;render();scrollTo(0,0)},
- toggle:d=>{const g=goal(d.k,d.id);if(g){g.done=!g.done;save();render()}},
- edit:d=>{editing.has(d.id)?editing.delete(d.id):editing.add(d.id);render()},
- addGoal:d=>{const g={id:uid(),text:'',krId:'',concretization:'',done:false};day(d.k).goals.push(g);editing.add(g.id);save();render();const i=$(`[data-gf="text"][data-id="${g.id}"]`);if(i)i.focus()},
- delGoal:d=>{const x=day(d.k);x.goals=x.goals.filter(g=>g.id!==d.id);editing.delete(d.id);save();render()},
- close:()=>{
-  const t=today(),nx=day(plus(t,1));
-  nx.goals=nx.goals.filter(g=>g.text.trim());
-  const bad=krs().length&&nx.goals.find(g=>!g.krId);
-  if(bad){render();return toast('Выбери KR для цели «'+bad.text+'»')}
-  const d=day(t);d.closed=true;d.snap={};krs().forEach(r=>{d.snap[r.id]=pct(r)});
-  editing.clear();save();render();toast('День закрыт ✓');
- },
- addKR:()=>{
-  const n=$('#nk').value.trim();if(!n)return toast('Введи название KR');
-  krs().push({id:uid(),title:n,target:+$('#nt').value||0,unit:$('#nu').value.trim(),current:0,progress:0});save();render();
- },
- delKR:d=>{
-  const n=Object.values(data.days).reduce((s,x)=>s+x.goals.filter(g=>g.krId===d.id).length,0);
-  if(!confirm(n?'Удалить KR? Он указан в целях ('+n+'), они останутся без KR.':'Удалить KR?'))return;
-  data.objective.keyResults=krs().filter(r=>r.id!==d.id);
-  Object.values(data.days).forEach(x=>x.goals.forEach(g=>{if(g.krId===d.id)g.krId=''}));save();render();
- },
- hist:d=>{histKey=d.k;render();scrollTo(0,0)},
- back:()=>{histKey=null;render()},
- delDay:d=>{if(confirm('Удалить этот день?')){delete data.days[d.k];histKey=null;save();render()}},
- exp:()=>{
-  const name='okr-daily-'+today()+'.json',json=JSON.stringify(data,null,1);
-  if(dl)return dl.save({filename:name,data:json}).then(r=>{if(r.status==='saved')toast('Файл сохранён')},e=>{if(!e||e.code!=='declined')toast('Не удалось сохранить файл')});
-  const f=new File([json],name,{type:'application/json'});
-  if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f]}).catch(()=>{});
-  else{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;a.click()}
- },
- imp:()=>$('#imp').click(),
- ai:()=>{
-  const L=['OKR: '+(data.objective.title||'—'),'Key Results:'];
-  krs().forEach(r=>L.push('- '+r.title+': '+pct(r)+'%'+(r.target>0?' ('+(r.current||0)+'/'+r.target+' '+(r.unit||'')+')':'')));
-  L.push('','Последние 14 дней (цели выполнено/всего; SWOT):');
-  for(let i=13;i>=0;i--){const k=plus(today(),-i),d=data.days[k];if(!d||!d.closed)continue;const s=stats(k),w=d.swot;L.push(k+': '+s[0]+'/'+s[1]+' | S: '+(w.s||'-')+' | W: '+(w.w||'-')+' | O: '+(w.o||'-')+' | T: '+(w.t||'-'))}
-  L.push('','Найди повторяющиеся паттерны и слабые места, предложи 3 конкретных изменения.');
-  navigator.clipboard.writeText(L.join('\n')).then(()=>toast('Скопировано. Вставь в чат с ИИ'),()=>toast('Не удалось скопировать'));
- }
-};
-function importData(file){
-  const r=new FileReader();
-  r.onload=()=>{try{
-    const d=JSON.parse(r.result);if(!d||typeof d!=='object'||!d.objective||!d.days)throw 0;
-    if(!confirm('Заменить текущие данные импортированными?'))return;
-    data=Object.assign(blank(),d);normalize();save();render();toast('Данные импортированы');
-  }catch(e){toast('Не удалось прочитать файл')}};
-  r.readAsText(file);
-}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b&&act[b.dataset.a])act[b.dataset.a](b.dataset)});
-function onIn(e){
-  const t=e.target,d=t.dataset;
-  if(t.id==='imp'){if(t.files[0]){importData(t.files[0]);t.value=''}return}
-  if(d.gf){const g=goal(d.k,d.id);if(g){g[d.gf]=t.value;save()}}
-  else if(d.sw){day(today()).swot[d.sw]=t.value;save()}
-  else if(d.krf){const r=KR(d.id);if(r){r[d.krf]=d.num?(+t.value||0):t.value;save();paint(r)}}
-  else if(d.obj){data.objective[d.obj]=t.value;save()}
-}
-document.addEventListener('input',onIn);
-document.addEventListener('change',onIn);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)render()});
-
-load();
-tab=(new Date().getHours()>=18||new Date().getHours()<ROLL)?'evening':'today';
-render();
-if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();
-let dl=null;try{if(window.claude&&claude.use)claude.use('downloads').then(x=>{dl=x},()=>{})}catch(_){}
-</script>
-<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))</script>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Основное меню">
+      <div class="brand"><span class="brand-symbol">◈</span><span>OKR <strong>Daily</strong><small>STRATEGY OS</small></span></div>
+      <div class="sidebar-heading">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+      <nav id="desktop-nav" class="nav-items" aria-label="Навигация"></nav>
+      <div class="sidebar-bottom"><span class="live-dot"></span> Локальный режим <small>v3</small></div>
+    </aside>
+    <div class="work-area">
+      <header class="topbar">
+        <div class="topbar-name"><span class="mobile-mark">◈</span><div><strong id="page-name">Сегодня</strong><small id="page-subtitle">Место для действий с максимальным эффектом</small></div></div>
+        <div class="topbar-actions"><button type="button" class="icon-btn" data-action="toggle-theme" aria-label="Переключить тему" title="Тема">◐</button><button type="button" class="icon-btn" data-action="open-notices" aria-label="Напоминания" title="Напоминания">♧<i id="notice-dot"></i></button></div>
+      </header>
+      <main id="app" tabindex="-1" aria-live="polite"></main>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Основная навигация"></nav>
+  <dialog id="modal" class="modal"><div id="modal-inner"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script defer src="app.js"></script>
+  <script>if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));</script>
 </body>
 </html>

@@ -1,18 +1,17 @@
 {
-  "name": "OKR Daily",
-  "short_name": "OKR Daily",
-  "description": "Ежедневный ритуал на основе OKR",
-  "lang": "ru",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#0f1117",
-  "theme_color": "#0f1117",
-  "icons": [
-    {"src": "icon-180.png", "sizes": "180x180", "type": "image/png"},
-    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
-    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  "id":"./",
+  "name":"OKR Daily 3 — Strategy OS",
+  "short_name":"OKR Daily",
+  "description":"Цели, Key Results, фокус, прогнозы и стратегический анализ",
+  "lang":"ru",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#10131f",
+  "theme_color":"#10131f",
+  "icons":[
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-180.png","sizes":"180x180","type":"image/png"}
   ]
 }
